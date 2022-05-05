@@ -61,7 +61,7 @@ main {
     border-radius: 1.5rem;
     /*revisar*/
     max-width: 90%;
-    margin: 18px 0 0 17px;
+    margin: 18px 0 15px 17px;
     flex-direction: column;
   
     
@@ -235,9 +235,43 @@ h2 {
 }
 
 .add-cats {
-    margin-top: 30px;
+    margin: 30px 0 40px 0;
+
 }
 
-.accordion-button {
-    background-color:#e9e1f3;
+
+.estilo-acordeon {
+    padding: 15px;
+    border: solid 3px #4a47a35f/*#6866ae96*/;
+    background-color: #ebe8f1af;
+    border-radius: 50px;
+}
+
+.formRegisterCat {
+    display: flex;
+    flex-direction: column;
+}
+
+.formRegisterCat > input, .select-options{
+    border: solid 3px #4a47a35f;
+    border-radius: 8px;
+    width: 75%;
+    margin-bottom: 15px;
+}
+
+.contenedor-boton-submit {
+    display: flex;
+    justify-content: flex-end
+}
+
+.submit-button {
+    padding: 10px;
+    background-color: #4a47a35f;
+    color: #ffffffee;
+    width: 50%;
+    display: block;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    margin-top: 15px;
+    
 }

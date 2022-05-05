@@ -69,26 +69,42 @@
                 <p>Estas son algunas fotos de los gatitos de las colonias. Si quieres puedes mandarnos fotos que hagas los días que vayas y las subiremos :)</p>
             </section>
             <section class="add-cats">
-                <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
                     <div class="accordion-item">
-                      <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                          Registrar un gatito
+                      <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="estilo-acordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            registrar un gatito&nbsp
+                            <img src="https://systemuicons.com/images/icons/chevron_down.svg">
                         </button>
                       </h2>
-                      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                          <form class="formRegisterCat">
-                              <label for="catName">Nombre</label>
-                              <input type="text" name="catName">
-                              <label for="place">¿Dónde le viste?</label>
-                              <select name="place">
-                                <option value="Erasmo">Erasmo</option>
-                                <option value="Puerta" selected>Puerta</option>
-                                <option value="Vivero">Vivero</option>
-                                <option value="Volley">Volley</option>
-                              </select>
-                          </form>
+                            <form class="formRegisterCat">
+                                <label for="catName">Nombre</label>
+                                <input type="text" name="catName">
+
+                                <label for="place">¿Dónde le viste?</label>
+                                <select class="select-options" name="place">
+                                  <option value="Erasmo">Erasmo</option>
+                                  <option value="Puerta" selected>Puerta</option>
+                                  <option value="Vivero">Vivero</option>
+                                  <option value="Volley">Volley</option>
+                                </select>
+                                <label for="color">¿De qué color era?</label>
+                                <select class="select-options" name="color">
+                                    <option value="Negro">Negro</option>
+                                    <option value="Blanco y negro" selected>Blanco y negro</option>
+                                    <option value="Gris">Gris</option>
+                                    <option value="Atigrado">Atigrado</option>
+                                    <option value="Tricolor">Tricolor</option>
+                                    <option value="Naranja">Naranja</option>
+                                  </select>
+                                <label for="color">Otras características</label>
+                                <textarea class="textarea" placeholder="heridas visibles, oreja cortada, gata embarazada..."></textarea>
+                                <div class="contenedor-boton-submit">
+                                    <button class="submit-button" @click="">registrar</button>
+                                </div>
+                            </form>
                         </div>
                       </div>
                     </div>
@@ -99,6 +115,7 @@
     <script>
         const mountedApp = app.mount("#app");
         crearCarru();
+        //class="accordion-button collapsed"
     </script>
 </body>
 
