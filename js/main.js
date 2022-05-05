@@ -1,0 +1,261 @@
+const minusculas = "abcdfghijklmnñopqrstuvwxyz";
+const mayusculas = minusculas.toLocaleUpperCase();
+const especiales = "!?¿¡/()&¬%$·#+^[]{};.";
+const numeros = "1234567890";
+
+const app = Vue.createApp({
+    data() {
+        return {
+            result: localStorage.getItem("nombre"),
+            usuario: null,
+            clave: null,
+            error: null,
+            usuarios: new Map(),
+            newName: "",
+            newUserName: "",
+            newPass: "",
+            repeatNewPass: "",
+            nuevoUsuario: [],
+            fecha: null,
+            test: "Marta",
+        };
+    },
+    created() {
+        fetch("../json/usuarios.json")
+            .then(response => response.json())
+            .then(response => this.usuarios = response)
+    },
+    methods: {
+            loginUsuario() {
+            localStorage.clear();
+            let existe = false;
+            let hashClave = CryptoJS.MD5(this.clave);
+            console.log(this.clave)
+
+            for (user of this.usuarios) {
+                if (this.usuario == user.nombreUsuario && hashClave == user.clave) {
+                    existe = true;
+                    localStorage.setItem("nombre", user.nombre);
+                    
+                    location.href = "principal.html";
+                }
+            }
+            if (!existe) {
+                this.error = "Usuario o contraseña incorrectos";
+            }
+            
+        },
+        registroUsuario() {
+            location.href = "index-registro.html";
+        },
+
+        validarNuevoUsuario() {
+            let especialesOk = true;
+            let mayusculasOk = true;
+            let userNameRepetido = false;
+
+            for (user of this.usuarios) {
+                if (this.newUserName == user.usuario) {
+                    userNameRepetido = true
+                    this.error = "El nombre de usuario ya existe"
+                }
+            }
+
+            for (let i = 0; i < especiales.length; i++) {
+                for (let j = 0; j < mayusculas.length; j++) {
+                    if (this.newUserName.includes(especiales.charAt(i))) {
+                        especialesOk = false;
+                    }
+                    if (this.newUserName.includes(mayusculas.charAt(j))) {
+                        mayusculasOk = false;
+                    }
+                }
+            }
+
+            if(!mayusculasOk || !especialesOk) {
+                this.error = "El nombre de usuario no puede contener mayúsculas y/o carcateres especiales distintos de _ o -"
+            }
+
+            if (especialesOk && mayusculasOk && !userNameRepetido) {
+                return true;
+            }
+        },
+
+        validarClaveNuevoUsuario() {
+            let especialesOk = false;
+            let mayusculasOk = false;
+            let numeroOk = false;
+
+
+            if (this.newPass != this.repeatNewPass) {
+                this.error = "Las contraseñas no coinciden";
+            }
+
+            for (let i = 0; i < mayusculas.length; i++) {
+                for (let j = 0; j < especiales.length; j++) {
+                    for (let k = 0; k < numeros.length; k++) {
+                        if (this.newPass.includes(mayusculas.charAt(i))) {
+                            mayusculasOk = true;
+                        }
+                        if (this.newPass.includes(especiales.charAt(j))) {
+                            especialesOk = true;
+                        }
+                        if (this.newPass.includes(numeros.charAt(k))) {
+                            numeroOk = true;
+                        }
+                    }
+                }
+            }
+
+            if (!especialesOk || !mayusculasOk || !numeroOk) {
+                this.error = "la contraseña debe contener al menos 6 caracteres y al menos 1 mayúscula, 1 caracter especial y 1 número"
+            }
+
+            if (this.newPass.length > 6 && mayusculasOk  && especialesOk  && numeroOk) {
+                return true;
+            }
+        },
+        procesarUsuario() {
+            this.validarNuevoUsuario();
+            this.validarClaveNuevoUsuario();
+
+            if (this.validarNuevoUsuario() && this.validarClaveNuevoUsuario()) {
+                console.log("Usuario creado correctamente");
+                this.nuevoUsuario =  {"nombreUsuario":this.newUserName,"clave":this.newPass, "nombre": this.newName, "claveRepetida": this.repeatNewPass} 
+                this.usuarios.push(this.nuevoUsuario)
+                        
+                
+            } else if (this.newName == "" || this.newUserName == "" || this.newPass == "" || this.repeatNewPass == "") {
+                this.error = "Por favor, rellena todos los campos"
+            }
+            
+            if(this.error == null) {
+                const data = this.nuevoUsuario;
+                fetch('http://localhost/marta/proyecto-final-DAW-master/api.php?controller=user&action=create', { 
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers:{
+                        'Content-Type': 'application/json'
+                    }
+                }).then(response => function(response) {
+    
+                    if (!response.ok) {
+                        console.log("error");
+                    }
+                })
+                .catch(error => console.error('Error:', error))
+            }
+        },
+        clickMenu() {
+            let menu = document.getElementsByClassName("menu-bar")[0];
+            let logo = document.getElementsByClassName("logo-menu-img")[0];
+
+            if (menu.style.display == "" || menu.style.display == "none") {
+                menu.style.display = "block";
+                logo.style.transform = "rotate(90deg)";
+            } else if (menu.style.display == "block") {
+                menu.style.display = "none";
+                logo.style.transform = "rotate(0deg)";
+            }
+        },
+        
+    }
+});
+
+
+//fuera de vue
+function crearMapa() {
+    var map = L.map('map').setView([40.5474561,-3.6920009, 15.35], 15);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([40.5463039, -3.6969561]).addTo(map);
+    L.marker([40.5471316, -3.6946928]).addTo(map);
+    L.marker([40.5464535, -3.6935156]).addTo(map);
+    L.marker([40.547737, -3.6877735]).addTo(map);
+    // .bindPopup('Patio')
+    // .openPopup();
+
+    console.log("e")
+}
+
+
+function elTiempo() {
+    const apiKey = "4da77490923ee60c91e798108330840c";
+  
+    let temperaturaValor = document.getElementById("temperatura-valor");
+    let temperaturaDescripcion = document.getElementById('temperatura-descripcion')  
+    
+    let ubicacion = document.getElementById('ubicacion')  
+    let iconoAnimado = document.getElementById('icono-animado') 
+
+
+    const url  = `https://api.openweathermap.org/data/2.5/weather?q=Alcobendas&lang=es&units=metric&appid=${apiKey}`
+
+    fetch(url)
+        .then(response => data = response.json())
+        .then(response => {
+
+            temperaturaValor.innerHTML = Math.round(response.main.temp) + " °C"; //grados
+
+            let desc = response.weather[0].description
+            temperaturaDescripcion.innerHTML = desc; //descripcion
+            
+            ubicacion.innerHTML = response['name'];
+
+            switch(response.weather[0].main) {
+                case 'Thunderstorm':
+                      iconoAnimado.src='../animated/thunder.svg'
+                      console.log('TORMENTA');
+                      break;
+                    case 'Drizzle':
+                      iconoAnimado.src='../animated/rainy-2.svg'
+                      console.log('LLOVIZNA');
+                      break;
+                    case 'Rain':
+                      iconoAnimado.src='../animated/rainy-7.svg'
+                      console.log('LLUVIA');
+                      break;
+                    case 'Snow':
+                      iconoAnimado.src='../animated/snowy-6.svg'
+                        console.log('NIEVE');
+                      break;                        
+                    case 'Clear':
+                        iconoAnimado.src='../animated/day.svg'
+                        console.log('LIMPIO');
+                      break;
+                    case 'Atmosphere':
+                      iconoAnimado.src='../animated/weather.svg'
+                        console.log('ATMOSFERA');
+                        break;  
+                    case 'Clouds':
+                        iconoAnimado.src='../animated/cloudy-day-1.svg'
+                        console.log('NUBES');
+                        break;  
+                    default:
+                      iconoAnimado.src='../animated/cloudy-day-1.svg'
+                      console.log('por defecto');
+            }
+        })
+        .catch(console.error());
+}
+
+    function crearCarru() {
+
+    const arrayImgs = ["img1", "img2", "img3", "img4", "img5", "img6", "img7", "img8", "img9", "img10"];
+
+    let divCarrusel = document.getElementById("carouselExampleCaptions");
+    let divCarruselInner = document.getElementsByClassName("carousel-inner")[0];
+    let divPadre = document.getElementsByClassName("carousel-item")[1];
+
+    for (let i = 2; i < arrayImgs.length; i++) {
+        let newItem = divPadre.cloneNode(true);
+        divCarruselInner.appendChild(newItem);
+        document.images[i].src = "../img/" + arrayImgs[i] + ".jpg";
+    }
+}
+
+
+//api tiempo

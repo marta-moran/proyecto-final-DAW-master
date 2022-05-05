@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+
+/* FORMULARIOS LOGIN Y REGISTRO */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #4a47a3;
+    --text-color: #2a2b2c;
+    --secondary-color: #c9c8e3;
+}
+
+body {
+    line-height: 1.5;
+    font-family: "Inter", "Poppins", sans-serif;
+    color: var(--text-color);
+    background-color: #ededf6;
+    
+}
+
+label {
+    display: block;
+}
+
+input, button {
+    border: none;
+    box-shadow: none;
+    font:inherit;
+    width: 100%;
+}
+
+/*:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(255, 210, 127, 0.897);
+}
+*/
+.input-label {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.input-text {
+    padding: 0.6rem;
+    border: 2px solid #e0e0e0;
+    border-radius: .25rem;
+}
+
+.input-button {
+    padding: .3rem;
+    cursor: pointer;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: 2px solid var(--secondary-color);
+    border-radius: .25rem;
+}
+
+.input-entrar {
+    border-color: var(--primary-color);
+    background-color: #ededf6;
+    color: var(--text-color);
+}
+

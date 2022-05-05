@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <link rel="stylesheet" href="../css/styles-base.css">
+    <link rel="stylesheet" href="../css/styles-home.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <title>Protectora Patitas</title>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <section class="header">
+                <div class="logo-menu">
+                    <img @click="clickMenu" class="logo-menu-img"
+                        src="https://systemuicons.com/images/icons/menu_vertical.svg" alt="logo menu">
+                </div>
+                <div class="menu">
+                    <h1>home</h1>
+                </div>
+            </section>
+        </header>
+        <nav class="menu-bar">
+            <ul>
+                <li class="menu-user">¡Hola {{ test }}!</li>
+                <!--<hr>-->
+                <li><a href="registro-gatos.html">registrar gatitos</a></li>
+                <li><a href="#">registrar puntos</a></li>
+                <li><a href="#">calendario</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!--Aquí acaba vue-->
+    <main>
+        <section class="contenedor-tiempo" {{ elTiempo() }}>
+            <div id="caja1">
+                <h2 id="temperatura-valor"></h2>
+                <h2 id="temperatura-descripcion"></h2>
+            </div>
+            <div id="caja2">
+                <h2 id="ubicacion"></h2>
+                <img id="icono-animado" src="" alt="" height="128" width="128">
+            </div>
+        </section>
+
+        <section class="contenedor-mapa">
+            <h2 class="localizaciones">Localizaciones de los puntos</h2>
+            <div id="map"></div>
+        </section>
+
+        <section class="contenedor-consejos">
+            <div class="utiles-consejos-bar">
+                <h2 onclick="openTab('utiles')">Necesario</h2>
+                <h2 onclick="openTab('consejos')">Consejos</h2>
+            </div>
+            <hr>
+            <div class="subcontendor">
+                <div id="utiles" class="opciones-utiles-consejos">
+                    <span onclick="this.parentElement.style.display='none'"></span>
+                    <ul>
+                        <li>Un saco de pienso de gato adulto de 15kg</li>
+                        <li>Un saco de pienso de gato bebé de 5kg</li>
+                        <li>Ocho latas de comida húmeda</li>
+                        <li>Ocho garrafas de agua de 6l</li>
+                        <li>Periódicos para para poner en el suelo de los refugios (si tienes de sobra puedes dejarlos
+                            en algún punto, siempre son útiles :))</li>
+                        <li>Guantes desechables</li>
+                    </ul>
+                </div>
+
+                <div id="consejos" class="opciones-utiles-consejos">
+                    <span onclick="this.parentElement.style.display='none'"></span>
+                    <ul>
+                        <li>Evita las horas que más gente haya en la universidad</li>
+                        <li>Si los puntos están ligeramente separados, desplázate en coche</li>
+                        <li>Limpia los comederos y bebederos con un poco de agua y un cepillo antes de poner la
+                            nueva comida o agua</li>
+                        <li>Lleva ropa cómoda y que no te importe manchar. Desinfecta las zapatillas que hayas usado
+                            antes de volver a entrar en tu casa.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script>
+        const mountedApp = app.mount("#app");
+
+        elTiempo();
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById("consejos").style.display = "none";
+        })
+
+        crearMapa();
+
+        function openTab(opcion) {
+
+            let optionTab = document.getElementsByClassName("opciones-utiles-consejos");
+
+            for (let tab = 0; tab < optionTab.length; tab++) {
+                optionTab[tab].style.display = "none";
+            }
+            document.getElementById(opcion).style.display = "block";       
+        }
+        
+
+    </script>
+</body>
+
+</html>

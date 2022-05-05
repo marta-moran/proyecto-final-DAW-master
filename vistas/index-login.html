@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles-base.css">
+    <link rel="stylesheet" href="../css/styles-login.css">
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <title>Protectora Patitas</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="flex-container">
+            <div class="grid-container">
+                <header class="header">
+                    <h1>Protectora patitas</h1>
+                </header>
+                <main class="main">
+                    
+                    <section>
+                        <form class="login-form" v-on:submit.prevent>
+                            <div class="registro">
+                                <label class="input-label">Usuario</label>
+                                <input v-model="usuario" type="text" class="input-text" placeholder="Your username">
+                            </div>
+                            <div class="registro">
+                                <label class="input-label">Clave</label>
+                                <input v-model="clave" type="password" class="input-text"
+                                    placeholder="Your secret password">
+                            </div>
+                            <div class="enviar">
+                                <button class="input-button" @click="registroUsuario">Registrarse</button>
+                                <!--Aqui se debería redirigir con vue al formulario de registro (window.onload)-->
+                            </div>
+                            <div class="enviar">
+                                <button class="input-button input-entrar" @click="loginUsuario">Entrar</button>
+                                <!--Aqui se debería redirigir con vue a la página principal. Si encuentra al usuario 
+                        en la bd o en el mapa del localstorage te manda a la página principal-->
+                            </div>
+                        </form>
+                    </section>
+              
+                </main>
+                <div class="result__error" v-if="error">{{ error }}</div>
+                <!--<footer class="footer">
+                    <section>
+                        <p>&#128151Desarrollado por Marta Morán&#x1F497</p>
+                        <p>2022</p>
+                    </section>
+                </footer>-->
+            </div>
+        </div>
+    </div>
+    <script src="../js/main.js"></script>
+    <script>
+        const mountedApp = app.mount("#app");
+
+        function preventEnter() {
+            document.addEventListener("keydown", (event) => {
+                if (event.key == "Enter") {
+                    event.preventDefault();
+                }
+            })
+        }
+        preventEnter();
+    </script>
+</body>
+
+</html>

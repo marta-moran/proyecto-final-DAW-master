@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles-base.css">
+    <link rel="stylesheet" href="../css/styles-registro.css">
+    <script src="https://unpkg.com/vue@3"></script>
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <title>Protectora Patitas</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="grid-container">
+            <header class="header">
+                <h1>Protectora patitas</h1>
+            </header>
+            <main class="main">
+                <section>
+                    <form class="login-form"  method="POST" v-on:submit.prevent>
+                        <div class="texto">
+                            <p>¡Bienvenido/a! Gracias por querer formar parte de nuestra protectora. Por favor, rellena
+                                este formulario para poder empezar a usar la aplicación</p>
+                        </div>
+                        <div class="registro">
+                            <label class="input-label">Nombre completo</label>
+                            <input v-model="newName" type="text" class="input-text" placeholder="Your name" name="nombre">
+                        </div>
+                        <div class="registro">
+                            <label class="input-label">Nombre de usuario</label>
+                            <input v-model="newUserName" type="text" class="input-text" placeholder="Your username" name="nombreUsuario">
+                        </div>
+                        <div class="registro">
+                            <label class="input-label">Clave</label>
+                            <input v-model="newPass" type="text" class="input-text"
+                                placeholder="Your secret password" name="clave">
+                        </div>
+                        <div class="registro">
+                            <label class="input-label">Repite la clave</label>
+                            <input v-model="repeatNewPass" type="text" class="input-text" placeholder="Repeat your secret password" name="claveRepetida">
+                        </div>
+
+
+                        <div class="enviar">
+                            <button class="input-button" @click="procesarUsuario">Enviar</button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+
+            <div class="result__error" v-if="error">{{ error }}</div>
+
+            <!--<footer class="footer">
+                <section>
+                    <p>&#128151Desarrollado por Marta Morán&#x1F497</p>
+                    <p>2022</p>
+                </section>
+            </footer> -->
+        </div>
+    </div>
+    <script src="../js/main.js"></script>
+    <script>
+        const mountedApp = app.mount("#app");
+    </script>
+</body>
+
+</html>
