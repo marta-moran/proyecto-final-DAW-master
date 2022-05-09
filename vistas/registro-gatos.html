@@ -36,7 +36,7 @@
                 <li class="menu-user">¡Hola {{ test }}!</li>
                 <!--<hr>-->
                 <li><a href="principal.html">home</a></li>
-                <li><a href="#">registrar puntos</a></li>
+                <li><a href="puntos-y-gatos.html">puntos y gatos</a></li>
                 <li><a href="#">calendario</a></li>
             </ul>
         </nav>
@@ -102,7 +102,7 @@
                                 <label for="color">Otras características</label>
                                 <textarea class="textarea" placeholder="heridas visibles, oreja cortada, gata embarazada..."></textarea>
                                 <div class="contenedor-boton-submit">
-                                    <button class="submit-button" @click="">registrar</button>
+                                    <button class="submit-button" @click="addCat">registrar</button>
                                 </div>
                             </form>
                         </div>
@@ -115,7 +115,6 @@
     <script>
         const mountedApp = app.mount("#app");
         crearCarru();
-        //class="accordion-button collapsed"
     </script>
 </body>
 

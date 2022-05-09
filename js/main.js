@@ -158,6 +158,9 @@ const app = Vue.createApp({
                 logo.style.transform = "rotate(0deg)";
             }
         },
+        addCat() {
+            
+        }
         
     }
 });
