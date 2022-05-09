@@ -1,0 +1,38 @@
+[
+{
+    "nombre": "Nevado",
+    "color": "Blanco",
+    "observaciones": "",
+    "punto": "Marx"
+},
+{
+    "nombre": "Ronaldo",
+    "color": "Negro",
+    "observaciones": "",
+    "punto": "Marx"
+},
+{
+    "nombre": "Carmencita",
+    "color": "Tricolor",
+    "observaciones": "Embarazada",
+    "punto": "Marx"
+},
+{
+    "nombre": "Pepe",
+    "color": "Blanco",
+    "observaciones": "",
+    "punto": "Biblioteca"
+},
+{
+    "nombre": "Rita",
+    "color": "Negro",
+    "observaciones": "",
+    "punto": "Biblioteca"
+},
+{
+    "nombre": "Juani",
+    "color": "Gris",
+    "observaciones": "Castrada",
+    "punto": "Filosofía y letras"
+}
+]

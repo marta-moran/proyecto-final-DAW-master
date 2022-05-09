@@ -18,15 +18,21 @@ const app = Vue.createApp({
             nuevoUsuario: [],
             fecha: null,
             test: "Marta",
+            cats: new Map()
         };
     },
     created() {
         fetch("../json/usuarios.json")
             .then(response => response.json())
             .then(response => this.usuarios = response)
+        //puede que esto interfiera. REVISAR    
+        fetch("../json/gatos.json")
+            .then(respuesta => respuesta.json())
+            .then(respuesta => this.cats = respuesta)
     },
+
     methods: {
-            loginUsuario() {
+        loginUsuario() {
             localStorage.clear();
             let existe = false;
             let hashClave = CryptoJS.MD5(this.clave);
@@ -36,14 +42,14 @@ const app = Vue.createApp({
                 if (this.usuario == user.nombreUsuario && hashClave == user.clave) {
                     existe = true;
                     localStorage.setItem("nombre", user.nombre);
-                    
+
                     location.href = "principal.html";
                 }
             }
             if (!existe) {
                 this.error = "Usuario o contraseña incorrectos";
             }
-            
+
         },
         registroUsuario() {
             location.href = "index-registro.html";
@@ -72,7 +78,7 @@ const app = Vue.createApp({
                 }
             }
 
-            if(!mayusculasOk || !especialesOk) {
+            if (!mayusculasOk || !especialesOk) {
                 this.error = "El nombre de usuario no puede contener mayúsculas y/o carcateres especiales distintos de _ o -"
             }
 
@@ -111,7 +117,7 @@ const app = Vue.createApp({
                 this.error = "la contraseña debe contener al menos 6 caracteres y al menos 1 mayúscula, 1 caracter especial y 1 número"
             }
 
-            if (this.newPass.length > 6 && mayusculasOk  && especialesOk  && numeroOk) {
+            if (this.newPass.length > 6 && mayusculasOk && especialesOk && numeroOk) {
                 return true;
             }
         },
@@ -121,29 +127,29 @@ const app = Vue.createApp({
 
             if (this.validarNuevoUsuario() && this.validarClaveNuevoUsuario()) {
                 console.log("Usuario creado correctamente");
-                this.nuevoUsuario =  {"nombreUsuario":this.newUserName,"clave":this.newPass, "nombre": this.newName, "claveRepetida": this.repeatNewPass} 
+                this.nuevoUsuario = { "nombreUsuario": this.newUserName, "clave": this.newPass, "nombre": this.newName, "claveRepetida": this.repeatNewPass }
                 this.usuarios.push(this.nuevoUsuario)
-                        
-                
+
+
             } else if (this.newName == "" || this.newUserName == "" || this.newPass == "" || this.repeatNewPass == "") {
                 this.error = "Por favor, rellena todos los campos"
             }
-            
-            if(this.error == null) {
+
+            if (this.error == null) {
                 const data = this.nuevoUsuario;
-                fetch('http://localhost/marta/proyecto-final-DAW-master/api.php?controller=user&action=create', { 
+                fetch('http://localhost/marta/proyecto-final-DAW-master/api.php?controller=user&action=create', {
                     method: 'POST',
                     body: JSON.stringify(data),
-                    headers:{
+                    headers: {
                         'Content-Type': 'application/json'
                     }
-                }).then(response => function(response) {
-    
+                }).then(response => function (response) {
+
                     if (!response.ok) {
                         console.log("error");
                     }
                 })
-                .catch(error => console.error('Error:', error))
+                    .catch(error => console.error('Error:', error))
             }
         },
         clickMenu() {
@@ -159,16 +165,44 @@ const app = Vue.createApp({
             }
         },
         addCat() {
-            
+
+        },
+        listCatsMarx() {
+            const divAccordionMarx = document.getElementById("marx");
+
+            for (cat of this.cats) {
+                console.log(cat.nombre)
+                if (cat.punto == "Marx")  {
+                    let p = document.createElement("p")
+                    p.innerHTML = cat.nombre;
+                    divAccordionMarx.appendChild(p);
+                }
+            }
+        },
+        listCatsBiblioteca() {
+            const divAccordionBiblioteca = document.getElementById("biblioteca");
+
+            for (cat of this.cats) {
+                console.log(cat.nombre)
+                if (cat.punto == "Biblioteca")  {
+                    let p = document.createElement("p")
+                    p.innerHTML = cat.nombre;
+                    divAccordionBiblioteca.appendChild(p);
+                }
+            }
         }
-        
+
+
+
+
+
     }
 });
 
 
 //fuera de vue
 function crearMapa() {
-    var map = L.map('map').setView([40.5474561,-3.6920009, 15.35], 15);
+    var map = L.map('map').setView([40.5474561, -3.6920009, 15.35], 15);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -187,15 +221,15 @@ function crearMapa() {
 
 function elTiempo() {
     const apiKey = "4da77490923ee60c91e798108330840c";
-  
+
     let temperaturaValor = document.getElementById("temperatura-valor");
-    let temperaturaDescripcion = document.getElementById('temperatura-descripcion')  
-    
-    let ubicacion = document.getElementById('ubicacion')  
-    let iconoAnimado = document.getElementById('icono-animado') 
+    let temperaturaDescripcion = document.getElementById('temperatura-descripcion')
+
+    let ubicacion = document.getElementById('ubicacion')
+    let iconoAnimado = document.getElementById('icono-animado')
 
 
-    const url  = `https://api.openweathermap.org/data/2.5/weather?q=Alcobendas&lang=es&units=metric&appid=${apiKey}`
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=Alcobendas&lang=es&units=metric&appid=${apiKey}`
 
     fetch(url)
         .then(response => data = response.json())
@@ -205,51 +239,51 @@ function elTiempo() {
 
             let desc = response.weather[0].description
             temperaturaDescripcion.innerHTML = desc; //descripcion
-            
+
             ubicacion.innerHTML = response['name'];
 
-            switch(response.weather[0].main) {
+            switch (response.weather[0].main) {
                 case 'Thunderstorm':
-                      iconoAnimado.src='../animated/thunder.svg'
-                      console.log('TORMENTA');
-                      break;
-                    case 'Drizzle':
-                      iconoAnimado.src='../animated/rainy-2.svg'
-                      console.log('LLOVIZNA');
-                      break;
-                    case 'Rain':
-                      iconoAnimado.src='../animated/rainy-7.svg'
-                      console.log('LLUVIA');
-                      break;
-                    case 'Snow':
-                      iconoAnimado.src='../animated/snowy-6.svg'
-                        console.log('NIEVE');
-                      break;                        
-                    case 'Clear':
-                        iconoAnimado.src='../animated/day.svg'
-                        console.log('LIMPIO');
-                      break;
-                    case 'Atmosphere':
-                      iconoAnimado.src='../animated/weather.svg'
-                        console.log('ATMOSFERA');
-                        break;  
-                    case 'Clouds':
-                        iconoAnimado.src='../animated/cloudy-day-1.svg'
-                        console.log('NUBES');
-                        break;  
-                    default:
-                      iconoAnimado.src='../animated/cloudy-day-1.svg'
-                      console.log('por defecto');
+                    iconoAnimado.src = '../animated/thunder.svg'
+                    console.log('TORMENTA');
+                    break;
+                case 'Drizzle':
+                    iconoAnimado.src = '../animated/rainy-2.svg'
+                    console.log('LLOVIZNA');
+                    break;
+                case 'Rain':
+                    iconoAnimado.src = '../animated/rainy-7.svg'
+                    console.log('LLUVIA');
+                    break;
+                case 'Snow':
+                    iconoAnimado.src = '../animated/snowy-6.svg'
+                    console.log('NIEVE');
+                    break;
+                case 'Clear':
+                    iconoAnimado.src = '../animated/day.svg'
+                    console.log('LIMPIO');
+                    break;
+                case 'Atmosphere':
+                    iconoAnimado.src = '../animated/weather.svg'
+                    console.log('ATMOSFERA');
+                    break;
+                case 'Clouds':
+                    iconoAnimado.src = '../animated/cloudy-day-1.svg'
+                    console.log('NUBES');
+                    break;
+                default:
+                    iconoAnimado.src = '../animated/cloudy-day-1.svg'
+                    console.log('por defecto');
             }
         })
         .catch(console.error());
 }
 
-    function crearCarru() {
+function crearCarru() {
 
     const arrayImgs = ["img1", "img2", "img3", "img4", "img5", "img6", "img7", "img8", "img9", "img10"];
 
-    let divCarrusel = document.getElementById("carouselExampleCaptions");
+    //let divCarrusel = document.getElementById("carouselExampleCaptions");
     let divCarruselInner = document.getElementsByClassName("carousel-inner")[0];
     let divPadre = document.getElementsByClassName("carousel-item")[1];
 
