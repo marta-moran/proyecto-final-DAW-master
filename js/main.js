@@ -168,16 +168,35 @@ const app = Vue.createApp({
 
         },
         listCatsMarx() {
+            //lo mejor es hacer algo como una card con una imagen del gato, su nombre y su color.
             const divAccordionMarx = document.getElementById("marx");
-
-            for (cat of this.cats) {
+            
+            const tabla = document.getElementById("tabla-marx");
+           /* for (cat of this.cats) {
                 console.log(cat.nombre)
                 if (cat.punto == "Marx")  {
                     let p = document.createElement("p")
                     p.innerHTML = cat.nombre;
+                   
                     divAccordionMarx.appendChild(p);
                 }
-            }
+            }*/
+
+          /*for (cat of this.cats) {
+                console.log(cat.nombre)
+                if (cat.punto == "Marx")  {
+                    let fila = document.createElement("tr")
+                    let celda = document.createElement("td")
+                    let celda2 = document.createElement("td")
+                    celda.innerHTML = cat.nombre;
+                    celda2.innerHTML = cat.color;
+                    fila.appendChild(celda);
+                    fila.appendChild(celda2)
+                    tabla.appendChild(fila)
+                    divAccordionMarx.appendChild(tabla);
+                }
+            }*/
+
         },
         listCatsBiblioteca() {
             const divAccordionBiblioteca = document.getElementById("biblioteca");
@@ -190,7 +209,32 @@ const app = Vue.createApp({
                     divAccordionBiblioteca.appendChild(p);
                 }
             }
-        }
+        },
+        listCatsFilosofia() {
+            const divAccordionFilosofia = document.getElementById("filosofia");
+
+            for (cat of this.cats) {
+                console.log(cat.nombre)
+                if (cat.punto == "Filosofia y letras")  {
+                    let p = document.createElement("p")
+                    p.innerHTML = cat.nombre;
+                    divAccordionFilosofia.appendChild(p);
+                }
+            }
+        },
+        listCatsErasmo() {
+            const divAccordionErasmo = document.getElementById("erasmo");
+
+            for (cat of this.cats) {
+                console.log(cat.nombre)
+                if (cat.punto == "Erasmo")  {
+                    let p = document.createElement("p")
+                    p.innerHTML = cat.nombre;
+                    divAccordionErasmo.appendChild(p);
+                }
+            }
+        },
+
 
 
 

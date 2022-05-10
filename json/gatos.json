@@ -34,5 +34,29 @@
     "color": "Gris",
     "observaciones": "Castrada",
     "punto": "Filosofía y letras"
+},
+{
+    "nombre": "Natalio",
+    "color": "Naranja",
+    "observaciones": "Le llora el ojo izquierdo",
+    "punto": "Erasmo"
+},
+{
+    "nombre": "Jenny",
+    "color": "Blanco",
+    "observaciones": "Castrada",
+    "punto": "Erasmo"
+},
+{
+    "nombre": "Casper",
+    "color": "Blanco",
+    "observaciones": "",
+    "punto": "Filosofia y letras"
+},
+{
+    "nombre": "Jero",
+    "color": "Gris",
+    "observaciones": "Castrada",
+    "punto": "Filosofía y letras"
 }
 ]
