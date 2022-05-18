@@ -18,7 +18,8 @@ const app = Vue.createApp({
             nuevoUsuario: [],
             fecha: null,
             test: "Marta",
-            cats: new Map()
+            cats: new Map(),
+            selected: null,
         };
     },
     created() {
@@ -167,77 +168,43 @@ const app = Vue.createApp({
         addCat() {
 
         },
-        listCatsMarx() {
-            //lo mejor es hacer algo como una card con una imagen del gato, su nombre y su color.
-            const divAccordionMarx = document.getElementById("marx");
-            
-            const tabla = document.getElementById("tabla-marx");
-           /* for (cat of this.cats) {
-                console.log(cat.nombre)
-                if (cat.punto == "Marx")  {
-                    let p = document.createElement("p")
-                    p.innerHTML = cat.nombre;
-                   
-                    divAccordionMarx.appendChild(p);
-                }
-            }*/
-
-          /*for (cat of this.cats) {
-                console.log(cat.nombre)
-                if (cat.punto == "Marx")  {
-                    let fila = document.createElement("tr")
-                    let celda = document.createElement("td")
-                    let celda2 = document.createElement("td")
-                    celda.innerHTML = cat.nombre;
-                    celda2.innerHTML = cat.color;
-                    fila.appendChild(celda);
-                    fila.appendChild(celda2)
-                    tabla.appendChild(fila)
-                    divAccordionMarx.appendChild(tabla);
-                }
-            }*/
-
-        },
-        listCatsBiblioteca() {
-            const divAccordionBiblioteca = document.getElementById("biblioteca");
+        listCats(punto) {
 
             for (cat of this.cats) {
-                console.log(cat.nombre)
-                if (cat.punto == "Biblioteca")  {
-                    let p = document.createElement("p")
-                    p.innerHTML = cat.nombre;
-                    divAccordionBiblioteca.appendChild(p);
+                if (punto == cat.punto) {
+                    const carrouselItem = document.createElement("div");
+                    const atri = document.createAttribute("class")
+                    atri.value = "carousel-item";
+                    carrouselItem.setAttribute("class", "carousel-item")
+                    const image = document.createElement("img");
+                    image.setAttribute("class", "d-block w-100");
+                    image.src = cat.img;
+
+                    carrouselItem.appendChild(image)
+
+
+                    const div = document.createElement("div");
+                    const h2 = document.createElement("h2");
+                    const p = document.createElement("p");
+                    h2.innerHTML = cat.nombre;
+                    p.innerHTML = "Color: " + cat.color;
+
+                    div.appendChild(h2);
+                    div.appendChild(p);
+                    carrouselItem.appendChild(div);
+
+                    for (let i = 0; i < document.getElementsByClassName("carousel-inner").length; i++) {
+                        let item = document.getElementsByClassName("carousel-inner")[i].getAttributeNode("id").value;
+                        if (item == cat.punto) {
+                            console.log(item)
+                            document.getElementById(item).appendChild(carrouselItem)
+                        }
+                    }
+
                 }
+
             }
-        },
-        listCatsFilosofia() {
-            const divAccordionFilosofia = document.getElementById("filosofia");
-
-            for (cat of this.cats) {
-                console.log(cat.nombre)
-                if (cat.punto == "Filosofia y letras")  {
-                    let p = document.createElement("p")
-                    p.innerHTML = cat.nombre;
-                    divAccordionFilosofia.appendChild(p);
-                }
-            }
-        },
-        listCatsErasmo() {
-            const divAccordionErasmo = document.getElementById("erasmo");
-
-            for (cat of this.cats) {
-                console.log(cat.nombre)
-                if (cat.punto == "Erasmo")  {
-                    let p = document.createElement("p")
-                    p.innerHTML = cat.nombre;
-                    divAccordionErasmo.appendChild(p);
-                }
-            }
-        },
-
-
-
-
+        }
 
 
     }
@@ -327,7 +294,6 @@ function crearCarru() {
 
     const arrayImgs = ["img1", "img2", "img3", "img4", "img5", "img6", "img7", "img8", "img9", "img10"];
 
-    //let divCarrusel = document.getElementById("carouselExampleCaptions");
     let divCarruselInner = document.getElementsByClassName("carousel-inner")[0];
     let divPadre = document.getElementsByClassName("carousel-item")[1];
 

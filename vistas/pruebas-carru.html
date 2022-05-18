@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -17,46 +18,104 @@
 </head>
 
 <body>
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <!--<div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
-                    class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>-->
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="../img/img1.jpg" class="d-block w-100" alt="imagen de un gato">
+    <div id="app">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://www.abc.com.py/resizer/gOeFzylOnBS_1BBaDgcIOYXgoLs=/fit-in/770x495/smart/arc-anglerfish-arc2-prod-abccolor.s3.amazonaws.com/public/NBEAZODWQBHXFDHLMO7N2SJOMQ.jpg" class="d-block w-100" alt="">
+                </div>
             </div>
-            <div class="carousel-item">
-                <img src="../img/img2.jpg" class="d-block w-100" alt="imagen de un gato">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+            <div id="descripcion">
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
     </div>
-    <script>
-        function crearCarru() {
 
-            const arrayImgs = ["img1", "img2", "img3", "img4", "img5", "img6", "img7", "img8", "img9", "img10"];
+    <script src="../js/main.js"></script>
+    <script>
+        const mountedApp = app.mount("#app");
+
+        function crearCarru() {
+            const descripcion = document.getElementById("descripcion");
 
             let divCarrusel = document.getElementById("carouselExampleCaptions");
             let divCarruselInner = document.getElementsByClassName("carousel-inner")[0];
             let divPadre = document.getElementsByClassName("carousel-item")[1];
+            let img = document.getElementsByTagName("img")[0];
+            let imgs = document.getElementsByTagName("img");
 
-            for (let i = 2; i < arrayImgs.length; i++) {
-                let newItem = divPadre.cloneNode(true);
-                divCarruselInner.appendChild(newItem);
-                document.images[i].src =  "../img/" + arrayImgs[i] + ".jpg";
+            const cats =
+                [
+                    {
+                        "nombre": "Juani",
+                        "color": "Gris",
+                        "punto": "Marx",
+                        "img": "https://t1.ea.ltmcdn.com/es/posts/7/3/2/razas_de_gatos_blancos_lista_completa_24237_600.jpg"
+                    },
+                    {
+                        "nombre": "Carmencita",
+                        "color": "Negro",
+                        "punto": "Marx",
+                        "img": "https://static.vecteezy.com/system/resources/previews/000/918/308/non_2x/beautiful-grey-and-white-cat-enjoy-noon-sunshine-in-garden-photo.jpg"
+                    },
+                    {
+                        "nombre": "Rober",
+                        "color": "Negro",
+                        "punto": "Marx",
+                        "img": "data:image/jpeg;base64,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"
+                    }
+
+                ]
+
+            for (cat of cats) {
+                const carrouselItem = document.createElement("div");
+                const atri = document.createAttribute("class")
+                atri.value = "carousel-item";
+                carrouselItem.setAttribute("class", "carousel-item")
+                const image = document.createElement("img");
+                image.setAttribute("class", "d-block w-100");
+                image.src = cat.img;
+
+                carrouselItem.appendChild(image)
+                divCarruselInner.appendChild(carrouselItem);
+
+                //crear la descripcion
+                const div = document.createElement("div");
+                const h2 = document.createElement("h2");
+                const p = document.createElement("p");
+                h2.innerHTML = cat.nombre;
+                p.innerHTML = "Color: " + cat.color;
+
+                div.appendChild(h2);
+                div.appendChild(p);
+                carrouselItem.appendChild(div);
+                //descripcion.appendChild(div);
+                console.log(cat.img)
+
+                for (let i = 0; i < document.getElementsByClassName("accordion-body").length; i++) {
+                    if (document.getElementsByClassName("accordion-body")[i].value == cat.punto) {
+                        document.getElementsByClassName("accordion-body")[i].appendChild()
+                    }
+                }
+
             }
+
+
+
+            /*    
+    
+                for (let i = 2; i < arrayImgs.length; i++) {
+                    let newItem = divPadre.cloneNode(true);
+                    divCarruselInner.appendChild(newItem);
+                    document.images[i].src = "../img/" + arrayImgs[i] + ".jpg";
+                } */
         }
 
         crearCarru();

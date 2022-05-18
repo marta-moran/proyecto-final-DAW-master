@@ -51,70 +51,128 @@
           <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingOne">
               <button class="estilo-acordeon" type="button" data-bs-toggle="collapse"
-                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" @click="listCatsMarx">
+                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"
+                v-on:click="listCats('Marx')">
                 <img src="https://systemuicons.com/images/icons/plus.svg">
                 Calle Marx
               </button>
             </h2>
             <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
               data-bs-parent="#accordionFlushExample">
-              <div id="marx" class="accordion-body">
-                <table id="tabla-marx">
-                  <thead>
-                    <tr>
-                      <td>Nombre</td>
-                      <td>Color</td>
-                      <td>Observaciones</td>
-                    </tr>
-                  </thead>
-                </table>
+              <div  class="accordion-body" >
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner" id="Marx" value="Marx">
+                    <div class="carousel-item active">
+                      <img
+                        src="https://www.abc.com.py/resizer/gOeFzylOnBS_1BBaDgcIOYXgoLs=/fit-in/770x495/smart/arc-anglerfish-arc2-prod-abccolor.s3.amazonaws.com/public/NBEAZODWQBHXFDHLMO7N2SJOMQ.jpg"
+                        class="d-block w-100" alt="">
+                    </div>
+                  </div>
+                  <!--<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>-->
+                </div>
               </div>
             </div>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingTwo">
-              <button value="biblioteca" class="estilo-acordeon" type="button" data-bs-toggle="collapse"
+              <button class="estilo-acordeon" type="button" data-bs-toggle="collapse"
                 data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"
-               @click="listCatsBiblioteca">
+                v-on:click="listCats('Biblioteca')">
                 <img src="https://systemuicons.com/images/icons/plus.svg">
                 Biblioteca
               </button>
             </h2>
             <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
               data-bs-parent="#accordionFlushExample">
-              <div id="biblioteca" class="accordion-body">
-                <table id="tabla-biblioteca" class="table table-hover">
-                  <thead>
-                  </thead>
-                </table>
+              <div  class="accordion-body" >
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                  <div id="Biblioteca" class="carousel-inner" value="Biblioteca">
+                    <div class="carousel-item active">
+                      <img
+                        src="https://www.abc.com.py/resizer/gOeFzylOnBS_1BBaDgcIOYXgoLs=/fit-in/770x495/smart/arc-anglerfish-arc2-prod-abccolor.s3.amazonaws.com/public/NBEAZODWQBHXFDHLMO7N2SJOMQ.jpg"
+                        class="d-block w-100" alt="">
+                    </div>
+                  </div>
+                 <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button> -->
+                </div>
               </div>
             </div>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingThree">
-              <button value="filosofia" class="estilo-acordeon" type="button" data-bs-toggle="collapse"
-                data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree" @click="listCatsFilosofia">
+              <button class="estilo-acordeon" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree"
+                v-on:click="listCats('Filosofia')">
                 <img src="https://systemuicons.com/images/icons/plus.svg">
                 Filosofía y letras
               </button>
             </h2>
             <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
               data-bs-parent="#accordionFlushExample">
-              <div id="filosofia" class="accordion-body">
+              <div class="accordion-body" >
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                  <div id="Filosofia" class="carousel-inner" value="Filosofia">
+                    <div class="carousel-item active">
+                      <img
+                        src="https://www.abc.com.py/resizer/gOeFzylOnBS_1BBaDgcIOYXgoLs=/fit-in/770x495/smart/arc-anglerfish-arc2-prod-abccolor.s3.amazonaws.com/public/NBEAZODWQBHXFDHLMO7N2SJOMQ.jpg"
+                        class="d-block w-100" alt="">
+                    </div>
+                  </div>
+                <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>--> 
+                </div>
               </div>
             </div>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingFour">
-              <button value="erasmo" class="estilo-acordeon" type="button" data-bs-toggle="collapse"
-                data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour" @click="listCatsErasmo">
+              <button class="estilo-acordeon" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour"
+                v-on:click="listCats('Erasmo')">
                 <img src="https://systemuicons.com/images/icons/plus.svg">
                 Erasmo
               </button>
             </h2>
             <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
               data-bs-parent="#accordionFlushExample">
-              <div id="erasmo" class="accordion-body">
+              <div  class="accordion-body" >
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                  <div id="Erasmo" class="carousel-inner" value="Erasmo">
+                    <div class="carousel-item active">
+                      <img
+                        src="https://www.abc.com.py/resizer/gOeFzylOnBS_1BBaDgcIOYXgoLs=/fit-in/770x495/smart/arc-anglerfish-arc2-prod-abccolor.s3.amazonaws.com/public/NBEAZODWQBHXFDHLMO7N2SJOMQ.jpg"
+                        class="d-block w-100" alt="">
+                    </div>
+                  </div>
+                <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>-->
+                </div>
               </div>
             </div>
           </div>

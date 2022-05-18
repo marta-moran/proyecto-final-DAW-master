@@ -281,8 +281,25 @@ h2 {
     width: 90%;
 }
 
+
 .estilo-acordeon {
     text-align: start;
     
 }
 
+#marx > .card {
+ 
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+}
+
+ .card-body > p {
+   
+    font-size: 0.9rem;
+}
+
+#descripcion-gato {
+    border: var(--primary-color) 1px solid;
+}
