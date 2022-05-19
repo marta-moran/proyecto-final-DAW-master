@@ -239,7 +239,6 @@ h2 {
     width: 85%;
 }
 
-
 .estilo-acordeon {
     padding: 15px;
     border: solid 3px #4a47a36b/*#6866ae96*/;
@@ -251,6 +250,7 @@ h2 {
 .formRegisterCat {
     display: flex;
     flex-direction: column;
+    width: 110%;
 }
 
 .formRegisterCat > input, .select-options{
@@ -287,19 +287,20 @@ h2 {
     
 }
 
-#marx > .card {
- 
-    width: 100%;
-
-    display: flex;
-    flex-direction: row;
-}
-
- .card-body > p {
-   
-    font-size: 0.9rem;
-}
-
 #descripcion-gato {
     border: var(--primary-color) 1px solid;
 }
+
+.accordion-body {
+   display: flex;
+   justify-content: space-around
+}
+
+.accordion-body img {
+    margin-bottom: 10px;
+}
+
+.carousel-inner h2 {
+    font-size: 1.2rem;
+}
+

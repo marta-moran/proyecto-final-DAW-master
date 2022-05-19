@@ -19,7 +19,6 @@ const app = Vue.createApp({
             fecha: null,
             test: "Marta",
             cats: new Map(),
-            selected: null,
         };
     },
     created() {
@@ -182,15 +181,20 @@ const app = Vue.createApp({
 
                     carrouselItem.appendChild(image)
 
-
                     const div = document.createElement("div");
                     const h2 = document.createElement("h2");
                     const p = document.createElement("p");
+                    const p2 = document.createElement("p");
                     h2.innerHTML = cat.nombre;
                     p.innerHTML = "Color: " + cat.color;
+                    p2.innerHTML = "Observaciones: <br>" + cat.observaciones;
+                    if (cat.observaciones == "") {
+                        p2.innerHTML += "—"
+                    }
 
                     div.appendChild(h2);
                     div.appendChild(p);
+                    div.appendChild(p2);
                     carrouselItem.appendChild(div);
 
                     for (let i = 0; i < document.getElementsByClassName("carousel-inner").length; i++) {
