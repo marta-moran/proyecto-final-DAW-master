@@ -171,6 +171,7 @@ const app = Vue.createApp({
             location.href = "index-login.html"
             console.log(localStorage);
         },
+        
         addCat() {
 
         },

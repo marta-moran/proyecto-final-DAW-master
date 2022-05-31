@@ -151,6 +151,13 @@
   <script src="../js/main.js"></script>
   <script>
     const mountedApp = app.mount("#app");
+    
+    document.addEventListener('DOMContentLoaded', () => {
+            console.log(localStorage)
+            if (localStorage.length == 0) {
+                location.href = "index-login.html";
+            }
+        })
   </script>
 </body>
 
