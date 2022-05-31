@@ -17,7 +17,6 @@ const app = Vue.createApp({
             repeatNewPass: "",
             nuevoUsuario: [],
             fecha: null,
-            test: "Marta",
             cats: new Map(),
         };
     },
@@ -36,10 +35,11 @@ const app = Vue.createApp({
             localStorage.clear();
             let existe = false;
             let hashClave = CryptoJS.MD5(this.clave);
-            console.log(this.clave)
+            
 
             for (user of this.usuarios) {
                 if (this.usuario == user.nombreUsuario && hashClave == user.clave) {
+                    console.log(this.clave)
                     existe = true;
                     localStorage.setItem("nombre", user.nombre);
 
@@ -150,6 +150,8 @@ const app = Vue.createApp({
                     }
                 })
                     .catch(error => console.error('Error:', error))
+                    location.href = "principal.html"
+                    localStorage.setItem("nombre", this.newName);
             }
         },
         clickMenu() {
@@ -163,6 +165,11 @@ const app = Vue.createApp({
                 menu.style.display = "none";
                 logo.style.transform = "rotate(0deg)";
             }
+        },
+        logOut() {
+            localStorage.removeItem("nombre");
+            location.href = "index-login.html"
+            console.log(localStorage);
         },
         addCat() {
 

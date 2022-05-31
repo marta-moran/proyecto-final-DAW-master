@@ -30,6 +30,7 @@ a {
     max-width: 90%;
     max-height: 65px;
     padding: 0;
+    align-items: center
 
 }
 
@@ -41,6 +42,11 @@ a {
     width: 47px;
     margin-top: 4px;
 
+}
+
+.logo-log-out {
+    width: 14%;
+    margin: 100px;
 }
 
 

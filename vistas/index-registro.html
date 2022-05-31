@@ -42,23 +42,13 @@
                             <label class="input-label">Repite la clave</label>
                             <input v-model="repeatNewPass" type="text" class="input-text" placeholder="Repeat your secret password" name="claveRepetida">
                         </div>
-
-
                         <div class="enviar">
                             <button class="input-button" @click="procesarUsuario">Enviar</button>
                         </div>
                     </form>
                 </section>
             </main>
-
             <div class="result__error" v-if="error">{{ error }}</div>
-
-            <!--<footer class="footer">
-                <section>
-                    <p>&#128151Desarrollado por Marta Morán&#x1F497</p>
-                    <p>2022</p>
-                </section>
-            </footer> -->
         </div>
     </div>
     <script src="../js/main.js"></script>
