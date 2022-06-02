@@ -92,10 +92,7 @@
        /* margin-top: 30px;*/
     }
 
-    .footer {
-        grid-area: footer;
-        margin-bottom: -160px;
-    }
+
 
     .result__error {
         text-align: center; 
