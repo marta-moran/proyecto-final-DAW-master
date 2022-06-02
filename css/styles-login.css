@@ -5,7 +5,7 @@
                             "form"
                             "result"
                        ;
-    grid-template-rows: 200px 350px 20px ;
+    grid-template-rows: 200px 450px 20px ;
     align-items: start;
                            
 }
@@ -38,9 +38,9 @@
 
 .login-form {
     position: absolute;
-    top:50%;
+    top:70%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-60%, -60%);
     min-width: 600px;
     max-width: 90%;
     background-color: #fff;
@@ -52,6 +52,7 @@
     box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, .15);
     font-size: 1.125rem;
     border-radius: 1.5rem; /*revisar*/
+    
 
 }
 
@@ -89,7 +90,7 @@
 
     .login-form {
         min-width: 87%;
-        height: 50%;
+        height: 60%;
         transform: none;
         top: 220px;
         left: 5%;
