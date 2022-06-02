@@ -73,7 +73,7 @@
 
     .header {
        font-size: 1rem;
-       margin-top: 120px;
+       margin-top: 90px;
     }
 
     .grid-container {
@@ -85,7 +85,7 @@
 
     .login-form {
         min-width: 87%;
-        height: 50%;
+        height: 60%;
         transform: none;
         top: 220px;
         left: 5%;
