@@ -65,7 +65,7 @@
 
     .header {
        font-size: 1rem;
-       margin-top: 120px;
+       margin-top: 100px; /* antes a 120 */
     }
 
     .grid-container {
@@ -79,13 +79,13 @@
         min-width: 87%;
         height: 52%;
         transform: none;
-        top:27%;
+        top:25%; /*antes 23*/
         left: 5%;
     }
 
     .result__error {
         text-align: center; 
-        margin-top: 50px;
+        margin-top: 45px;
        
     }
 }
