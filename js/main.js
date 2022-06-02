@@ -1,6 +1,6 @@
 const minusculas = "abcdfghijklmnñopqrstuvwxyz";
 const mayusculas = minusculas.toLocaleUpperCase();
-const especiales = "!?¿¡/()&¬%$·#+^[]{};.";
+const especiales = "!?¿¡/()&¬%$·#+^[]{};._-";
 const numeros = "1234567890";
 
 const app = Vue.createApp({
@@ -79,7 +79,7 @@ const app = Vue.createApp({
             }
 
             if (!mayusculasOk || !especialesOk) {
-                this.error = "El nombre de usuario no puede contener mayúsculas y/o carcateres especiales distintos de _ o -"
+                this.error = "El nombre de usuario no puede contener mayúsculas ni carcateres especiales";
             }
 
             if (especialesOk && mayusculasOk && !userNameRepetido) {
@@ -114,7 +114,7 @@ const app = Vue.createApp({
             }
 
             if (!especialesOk || !mayusculasOk || !numeroOk) {
-                this.error = "la contraseña debe contener al menos 6 caracteres y al menos 1 mayúscula, 1 caracter especial y 1 número"
+                this.error = "La contraseña debe tener al menos 6 caracteres, 1 mayúscula, 1 caracter especial y 1 número."
             }
 
             if (this.newPass.length > 6 && mayusculasOk && especialesOk && numeroOk) {
