@@ -5,7 +5,7 @@
                             "form"
                             "result"
                        ;
-    grid-template-rows: 100px 350px 20px ;
+    grid-template-rows: 200px 400px 20px ;
     align-items: start;
                            
 }
@@ -14,9 +14,6 @@
     grid-area: header;
     margin-top: 100px;
     text-align: center;
-   /* position: relative;
-    top: 310%; /*300*/
-   /* right: 13%; *//*sin border radius en form poner con 18%*/
 }
 
 .login-form {
@@ -75,15 +72,14 @@
 @media screen and (max-width: 480px) {
 
     .header {
-       margin-left: 22px;
-       margin-top: 140px;
+       font-size: 1rem;
+       margin-top: 120px;
     }
 
     .grid-container {
         width: auto;
-        grid-template-rows: 100px 500px 100px;
+        grid-template-rows: 200px 500px 100px;
         align-items: start;
-        row-gap: 3.5rem;
         grid-template-columns: 100%;
     }
 
@@ -91,7 +87,7 @@
         min-width: 87%;
         height: 50%;
         transform: none;
-        top: 160px;
+        top: 220px;
         left: 5%;
     }
 
