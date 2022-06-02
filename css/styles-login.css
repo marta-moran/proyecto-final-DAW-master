@@ -5,7 +5,7 @@
                             "form"
                             "result"
                        ;
-    grid-template-rows: 200px 350px 20px ;
+    grid-template-rows: 100px 350px 20px ;
     align-items: start;
                            
 }
@@ -76,12 +76,12 @@
 
     .header {
        margin-left: 22px;
-       margin-top: 10px;
+       margin-top: 140px;
     }
 
     .grid-container {
         width: auto;
-        grid-template-rows: 200px 500px 100px;
+        grid-template-rows: 100px 500px 100px;
         align-items: start;
         row-gap: 3.5rem;
         grid-template-columns: 100%;
