@@ -12,11 +12,7 @@
 
 .header {
     grid-area: header;
-    margin-top: 100px;
-    text-align: center;
-   /* position: relative;
-    top: 310%; /*300*/
-   /* right: 13%; *//*sin border radius en form poner con 18%*/
+    margin-top: 40px;
 }
 
 .main {
