@@ -35,12 +35,12 @@
                         </div>
                         <div class="registro">
                             <label class="input-label">Clave</label>
-                            <input v-model="newPass" type="text" class="input-text"
+                            <input v-model="newPass" type="password" class="input-text"
                                 placeholder="Your secret password" name="clave">
                         </div>
                         <div class="registro">
                             <label class="input-label">Repite la clave</label>
-                            <input v-model="repeatNewPass" type="text" class="input-text" placeholder="Repeat your secret password" name="claveRepetida">
+                            <input v-model="repeatNewPass" type="password" class="input-text" placeholder="Repeat your secret password" name="claveRepetida">
                         </div>
                         <div class="enviar">
                             <button class="input-button" @click="procesarUsuario">Enviar</button>

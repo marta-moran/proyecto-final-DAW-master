@@ -167,7 +167,7 @@ const app = Vue.createApp({
             }
         },
         logOut() {
-            localStorage.removeItem("nombre");
+            localStorage.clear();
             location.href = "index-login.html"
             console.log(localStorage);
         },
