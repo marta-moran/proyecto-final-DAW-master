@@ -47,7 +47,7 @@
     display: grid;
     grid: auto /1fr 1fr;
     column-gap: 1rem;
-    row-gap: 3.5rem;
+    row-gap: 2rem;
     padding: 3rem;
     box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, .15);
     font-size: 1.125rem;
@@ -77,13 +77,14 @@
     .header {
        font-size: 1.2rem;
        margin-left: 22px;
-       margin-top: 100px;
+       margin-top: 140px;
     }
 
     .grid-container {
         width: auto;
         grid-template-rows: 200px 500px 100px;
         align-items: start;
+        row-gap: 3.5rem;
         grid-template-columns: 100%;
     }
 
