@@ -78,7 +78,7 @@
     .header {
        font-size: 1.2rem;
        margin-left: 22px;
-       margin-top: 60px;
+       margin-top: 140px;
     }
 
     .grid-container {
@@ -94,7 +94,6 @@
         transform: none;
         top: 220px;
         left: 5%;
-        padding: 20px;
     }
 
     .result__error {
