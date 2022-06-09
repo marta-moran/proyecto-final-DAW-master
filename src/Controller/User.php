@@ -36,9 +36,6 @@ class User {
     private function validateUser($user) {
         //mismas validaciones q en el js
 
-        $mayusculas = strtoupper('abcdfghijklmnñopqrstuvwxyz');
-        $specialChars = '!?¿¡/()&¬%$·#+^[]{};.';
-
         if (!isset($user['nombre']) || $user['nombre'] == "") {
             return "El campo nombre es obligatorio";
         }

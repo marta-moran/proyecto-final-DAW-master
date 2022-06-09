@@ -43,7 +43,7 @@
                             <input v-model="repeatNewPass" type="password" class="input-text" placeholder="Repeat your secret password" name="claveRepetida">
                         </div>
                         <div class="enviar">
-                            <button class="input-button" @click="procesarUsuario">Enviar</button>
+                            <button class="input-button" @click="validarNuevoUsuario(); validarClaveNuevoUsuario(); procesarUsuario()">Enviar</button>
                         </div>
                     </form>
                 </section>

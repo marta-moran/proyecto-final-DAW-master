@@ -35,11 +35,9 @@ const app = Vue.createApp({
             localStorage.clear();
             let existe = false;
             let hashClave = CryptoJS.MD5(this.clave);
-            
 
             for (user of this.usuarios) {
                 if (this.usuario == user.nombreUsuario && hashClave == user.clave) {
-                    console.log(this.clave)
                     existe = true;
                     localStorage.setItem("nombre", user.nombre);
 
@@ -85,6 +83,8 @@ const app = Vue.createApp({
             if (especialesOk && mayusculasOk && !userNameRepetido) {
                 return true;
             }
+
+            
         },
 
         validarClaveNuevoUsuario() {
@@ -129,10 +129,13 @@ const app = Vue.createApp({
                 console.log("Usuario creado correctamente");
                 this.nuevoUsuario = { "nombreUsuario": this.newUserName, "clave": this.newPass, "nombre": this.newName, "claveRepetida": this.repeatNewPass }
                 this.usuarios.push(this.nuevoUsuario)
+                location.href = "principal.html"
+                localStorage.setItem("nombre", this.newName);
 
 
             } else if (this.newName == "" || this.newUserName == "" || this.newPass == "" || this.repeatNewPass == "") {
                 this.error = "Por favor, rellena todos los campos"
+          
             }
 
             if (this.error == null) {
@@ -150,8 +153,7 @@ const app = Vue.createApp({
                     }
                 })
                     .catch(error => console.error('Error:', error))
-                    location.href = "principal.html"
-                    localStorage.setItem("nombre", this.newName);
+                    
             }
         },
         clickMenu() {
@@ -175,13 +177,15 @@ const app = Vue.createApp({
         addCat() {
 
         },
+        gestionLocalStorage() {
+            if (localStorage.length > 1) {
+                localStorage.clear();
+            }
+        },
         listCats(punto) {
-
             for (cat of this.cats) {
                 if (punto == cat.punto) {
                     const carrouselItem = document.createElement("div");
-                    const atri = document.createAttribute("class")
-                    atri.value = "carousel-item";
                     carrouselItem.setAttribute("class", "carousel-item")
                     const image = document.createElement("img");
                     image.setAttribute("class", "d-block w-100");
@@ -212,20 +216,15 @@ const app = Vue.createApp({
                             document.getElementById(item).appendChild(carrouselItem)
                         }
                     }
-
                 }
-
             }
         }
-
-
     }
 });
 
 
-//fuera de vue
 function crearMapa() {
-    var map = L.map('map').setView([40.5474561, -3.6920009, 15.35], 15);
+    let map = L.map('map').setView([40.5474561, -3.6920009, 15.35], 15);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -235,10 +234,7 @@ function crearMapa() {
     L.marker([40.5471316, -3.6946928]).addTo(map);
     L.marker([40.5464535, -3.6935156]).addTo(map);
     L.marker([40.547737, -3.6877735]).addTo(map);
-    // .bindPopup('Patio')
-    // .openPopup();
 
-    console.log("e")
 }
 
 
@@ -257,7 +253,7 @@ function elTiempo() {
     fetch(url)
         .then(response => data = response.json())
         .then(response => {
-
+            console.log(response);
             temperaturaValor.innerHTML = Math.round(response.main.temp) + " °C"; //grados
 
             let desc = response.weather[0].description
@@ -315,6 +311,3 @@ function crearCarru() {
         document.images[i].src = "../img/" + arrayImgs[i] + ".jpg";
     }
 }
-
-
-//api tiempo
