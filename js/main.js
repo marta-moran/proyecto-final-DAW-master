@@ -59,9 +59,8 @@ const app = Vue.createApp({
             let userNameRepetido = false;
 
             for (user of this.usuarios) {
-                if (this.newUserName == user.usuario) {
+                if (this.newUserName == user.nombreUsuario) {
                     userNameRepetido = true
-                    this.error = "El nombre de usuario ya existe"
                 }
             }
 
@@ -80,6 +79,10 @@ const app = Vue.createApp({
                 this.error = "El nombre de usuario no puede contener mayúsculas ni carcateres especiales";
             }
 
+            if (userNameRepetido) {
+                this.error = "El nombre de usuario ya existe"
+            }
+
             if (especialesOk && mayusculasOk && !userNameRepetido) {
                 return true;
             }
@@ -91,10 +94,12 @@ const app = Vue.createApp({
             let especialesOk = false;
             let mayusculasOk = false;
             let numeroOk = false;
+            let clavesCoinciden = true;
 
 
             if (this.newPass != this.repeatNewPass) {
                 this.error = "Las contraseñas no coinciden";
+                clavesCoinciden = false;
             }
 
             for (let i = 0; i < mayusculas.length; i++) {
@@ -117,7 +122,7 @@ const app = Vue.createApp({
                 this.error = "La contraseña debe tener al menos 6 caracteres, 1 mayúscula, 1 caracter especial y 1 número."
             }
 
-            if (this.newPass.length > 6 && mayusculasOk && especialesOk && numeroOk) {
+            if (this.newPass.length > 6 && mayusculasOk && especialesOk && numeroOk && clavesCoinciden) {
                 return true;
             }
         },
